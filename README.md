@@ -23,13 +23,8 @@ pkgs.fetchFromGitHub {
 ```
 { config, pkgs, lib, ... }:
 
-let
-  rime-config = pkgs.callPackage ./rime-config.nix {};
-in
-{
   home.file.".local/share/fcitx5/rime/" = {
-    source = rime-config;      
+    source = pkgs.callPackage ./rime-config.nix {};      
     recursive = true;             
   };
-}
 ```
